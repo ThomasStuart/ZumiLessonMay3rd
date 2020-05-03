@@ -5,7 +5,7 @@ Goals:  <br>
 1.) perform a more complex route with the graphs we create.  By that I mean a route that has more than 3 directions  <br> 
 <br> 
 2.) create a graph of your own <br> 
-<br> Minimum requirements: <br> 
+Minimum requirements: <br> 
 	A.) at  least 5 nodes <br> 
 	B.) at least 5 edges <br> 
 <br> 
