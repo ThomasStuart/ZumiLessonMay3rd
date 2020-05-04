@@ -235,8 +235,50 @@ class Graph:
         # set class vars
         self.nodes_dict = nodes_dict
         self.edges_dict = edges_dict
+    
+    def fun_graph(self):
+        node_names = [  'a',    'b',    'c',   'd',   'e', 's']
+        node_pos   = [ (-5,0), (5,0),  (0,-5),   (0,5),  (5,5) , (0,0) ]
+        nodes_dict = {}
 
 
+        # Create nodes and add them to the dictionary
+        for index in range(0, len(node_names)):
+            key = node_names[index] # <- key @ first iteration = 'a' , (-5,0)
+            value = Node(node_names[index], node_pos[index]) # Creates a Node Object
+            nodes_dict[key] = value
+
+        #create the edges
+        edges_dict = {}
+        
+        e1 = Edge( "e1", nodes_dict['a'], nodes_dict['s'],   0, 180, 5)
+        e2 = Edge( "e2", nodes_dict['b'], nodes_dict['s'], 180,   0, 5)
+        e3 = Edge( "e3", nodes_dict['c'], nodes_dict['s'],  90, 270, 5)  
+        e4 = Edge( "e4", nodes_dict['e'], nodes_dict['s'], 225,  45,5)  
+        e5 = Edge( "e5", nodes_dict['d'], nodes_dict['e'], 315, 135,5)  
+
+        # store the edges in the dictionary 
+        edges_dict['as'] = e1
+        edges_dict['bs'] = e2
+        edges_dict['cs'] = e3
+        edges_dict['es'] = e4
+        edges_dict['de'] = e5
+
+        # store the edges in the proper node
+        nodes_dict['s'].edges.append(e4)
+        nodes_dict['s'].edges.append(e2)
+        nodes_dict['s'].edges.append(e1)
+        nodes_dict['s'].edges.append(e3)
+        nodes_dict['e'].edges.append(e5)
+        nodes_dict['e'].edges.append(e4)
+        nodes_dict['b'].edges.append(e2)
+        nodes_dict['c'].edges.append(e3)
+        nodes_dict['a'].edges.append(e1)
+        nodes_dict['d'].edges.append(e5)
+
+        # set class vars
+        self.nodes_dict = nodes_dict
+        self.edges_dict = edges_dict
 
 
 
@@ -306,11 +348,12 @@ def main():
     #G.create_simple()
     #G.create_simple_different_road_lengths()  
     #G.create_simple_different_angles()      
-    G.mystery_graph()  # <=======  TODO:: UNCOMMENT
+    #G.mystery_graph()  
+    G.fun_graph()       # <=======  TODO:: UNCOMMENT
     #G.create_d_graph()    
     #route = G.search('s', 'x')
     #route = G.search('s', 'a')   # Try this 
-    route = G.search('x', 'y')    # Try this 
+    route = G.search('d', 'c')    # Try this 
     #route = G.search('x', 'a')   # Try this 
     
     heading = 90
